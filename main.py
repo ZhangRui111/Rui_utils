@@ -1,7 +1,86 @@
 import csv
 import numpy as np
 import os
+import sys
 import time
+
+
+def exist_or_create_path(path):
+    """
+    Check whether a path exists, if not, then create this path.
+    Usually embedded in writing operation.
+    :param path: i.e., './logs/log.txt' or './logs/'
+    :return: create --> True
+    """
+    flag = False
+    if not os.path.exists(os.path.dirname(path)):
+        try:
+            os.makedirs(os.path.dirname(path))
+            flag = True
+        except OSError:
+            pass
+    return flag
+
+
+def save_txt(path, data, if_overwrite):
+    """
+    Save to a file.
+    :param path: file path involving filename, i.e., ./data/input_data.txt
+    :param data:
+    :param if_overwrite: Whether overwrite the original content.
+    :return:
+    """
+    exist_or_create_path(path)
+    if if_overwrite is True:
+        with open(path, 'w') as f:
+            f.write(str(data))
+            # f.writelines(list)
+    else:
+        with open(path, 'a') as f:
+            f.write(data)
+            # f.writelines(list)
+
+
+def read_txt(path):
+    """
+    Read from a file.
+    :param path: file path involving filename, i.e., ./data/input_data.txt
+    :return:
+    """
+    try:
+        with open(path, 'r') as f:
+            # The read() method just outputs the entire file if number of bytes are not given in the argument.
+            content = f.read()
+            # # readline(n) outputs at most n bytes of a single line of a file. It does not read more than one line.
+            # content = f.readline()
+            return content
+    except IOError:
+        print("File not found or path is incorrect")
+    finally:
+        print("exit")
+
+
+def save_csv(path, data, delimiter=',', if_overwrite=False):
+    """
+    Write to CSV file.
+    :param path: file path involving filename, i.e., ./data/input_data.csv
+    :param data: a list, i.e., [[1, 2, 3], ['Morning', 'Evening', 'Afternoon']]
+    :param delimiter: delimiter to separate different elements.
+    :param if_overwrite: Whether overwrite the original content.
+    :return:
+    """
+    exist_or_create_path(path)
+
+    if if_overwrite is True:
+        with open(path, 'w', newline='') as f:
+            writer = csv.writer(f, delimiter=delimiter)
+            for line in data:
+                writer.writerow(line)
+    else:
+        with open(path, 'a', newline='') as f:
+            writer = csv.writer(f, delimiter=delimiter)
+            for line in data:
+                writer.writerow(line)
 
 
 def read_csv(path, delimiter=','):
@@ -28,48 +107,27 @@ def read_csv(path, delimiter=','):
         return test_data
 
 
-def write_csv(path, data, delimiter=',', if_overwrite=False):
+def save_array_numpy(path, array, f_mt):
     """
-    Write to CSV file.
-    :param path: file path involving filename, i.e., ./data/input_data.csv
-    :param data: a list, i.e., [[1, 2, 3], ['Morning', 'Evening', 'Afternoon']]
-    :param delimiter: delimiter to separate different elements.
-    :param if_overwrite: Whether overwrite the original content.
+    Save an array to a text file.
+    :param path: file path involving filename, i.e., ./data/input_data.out, ./data/input_data.txt
+    :param array:
+    :param f_mt: i.e., '%d', '%f', '%10.5f', '%.4e' (exponential notation)
     :return:
     """
-    if not os.path.exists(os.path.dirname(path)):
-        try:
-            os.makedirs(os.path.dirname(path))
-        except OSError:
-            pass
-
-    if if_overwrite is True:
-        with open(path, 'w', newline='') as f:
-            writer = csv.writer(f, delimiter=delimiter)
-            for line in data:
-                writer.writerow(line)
-    else:
-        with open(path, 'a', newline='') as f:
-            writer = csv.writer(f, delimiter=delimiter)
-            for line in data:
-                writer.writerow(line)
+    exist_or_create_path(path)
+    np.savetxt(path, array, fmt=f_mt)
 
 
-def exist_or_create_path(path):
+def read_array_numpy(path, d_type=float):
     """
-    Check whether a path exists, if not, then create this path.
-    Usually embedded in writing operation.
-    :param path: i.e., './logs/log.txt' or './logs/'
-    :return: create --> True
+    Load data from a text file.
+    :param path: file path involving filename, i.e., ./data/input_data.out, ./data/input_data.txt
+    :param d_type: float or int
+    :return:
     """
-    flag = False
-    if not os.path.exists(os.path.dirname(path)):
-        try:
-            os.makedirs(os.path.dirname(path))
-            flag = True
-        except OSError:
-            pass
-    return flag
+    array = np.loadtxt(path, dtype=d_type)
+    return array
 
 
 def one_hot_encoding_numpy(array_list, size):
@@ -106,38 +164,67 @@ def normalization_zero2one_numpy(array):
     return new_array
 
 
-def main():
+def main(*args):
+    local_args = args
+    print([local_args[0][i] for i in range(len(local_args[0]))])
     # # ---------------- time recoder --------------- #
-    start_time = time.time()
-    # ---------- Write and Read csv file ---------- #
-    print('Write and Read csv file')
-    write_csv('./test/test.csv', [[1, 2, 3], [2, 5, 9]], ',', True)
-    content = read_csv('./test/test.csv', ',')
-    print(content)
-    # ------------- One Hot Encoding -------------- #
-    print('One Hot Encoding')
-    in_array = np.array([1, 2, 3])
-    one_hot_array = one_hot_encoding_numpy(in_array, in_array.max()+1)
-    print(one_hot_array)
-    # ------------ exist or create path ----------- #
-    print('exist or create path')
-    result = exist_or_create_path('./logs/')
-    print('Create: ', result)
-    # ------- find the most frequent element ------ #
-    print('find the most frequent element')
-    value = most_frequent_element_numpy(np.array([1, 2, 3, 4, 2, 3, 1, 2, 2, 9]))
-    print(value)
-    # ----------- normalization to [0, 1] --------- #
-    print('normalization to [0, 1]')
-    old_array = np.array([1, 2, 3, 4, 2, 3, 1, 2, 2, 9])
-    print(old_array)
-    new_array = normalization_zero2one_numpy(old_array)
-    print(new_array)
+    # start_time = time.time()
+    # # ---------- Save and Read csv file ---------- #
+    # print('Write and Read csv file')
+    # save_csv('./test/test.csv', [[1, 2, 3], [2, 5, 9]], ',', True)
+    # content = read_csv('./test/test.csv', ',')
+    # print(content)
+    # # ------------- One Hot Encoding -------------- #
+    # print('One Hot Encoding')
+    # in_array = np.array([1, 2, 3])
+    # one_hot_array = one_hot_encoding_numpy(in_array, in_array.max()+1)
+    # print(one_hot_array)
+    # # ------------ exist or create path ----------- #
+    # print('exist or create path')
+    # result = exist_or_create_path('./logs/')
+    # print('Create: ', result)
+    # # ------- find the most frequent element ------ #
+    # print('find the most frequent element')
+    # value = most_frequent_element_numpy(np.array([1, 2, 3, 4, 2, 3, 1, 2, 2, 9]))
+    # print(value)
+    # # ----------- normalization to [0, 1] --------- #
+    # print('normalization to [0, 1]')
+    # old_array = np.array([1, 2, 3, 4, 2, 3, 1, 2, 2, 9])
+    # print(old_array)
+    # new_array = normalization_zero2one_numpy(old_array)
+    # print(new_array)
     # # ---------------- time recoder -------------- #
-    for i in range(5):
-        time.sleep(1)
-    print('Time recoder: {0}'.format(time.time()-start_time))
+    # for i in range(5):
+    #     time.sleep(1)
+    # print('Time recoder: {0}'.format(time.time()-start_time))
+    # # ---- Save and Read ndarray from txt file. ---- #
+    # print('Save and Read ndarray from txt file.')
+    # array_1 = np.array([0, 1, 2, 3, 4, 5], dtype=int)
+    # array_2 = np.array([0.2, 3.56, 24.88881253, 1.258, 0.3698745, 1.25, 10.])
+    # array_3 = np.array([0.0000001, 0.000000025, 0.3666856, 0.12500004])
+    # save_array_numpy('./test/array_1.out', array_1, '%d')
+    # save_array_numpy('./test/array_21.out', array_2, '%f')
+    # save_array_numpy('./test/array_22.out', array_2, '%3.10f')
+    # save_array_numpy('./test/array_3.out', array_3, '%e')
+    # array_1_1 = read_array_numpy('./test/array_1.out', d_type=int)
+    # array_2_21 = read_array_numpy('./test/array_21.out', d_type=float)
+    # array_2_22 = read_array_numpy('./test/array_22.out', d_type=float)
+    # array_3_1 = read_array_numpy('./test/array_3.out', d_type=float)
+    # print(array_1_1)
+    # print(array_2_21)
+    # print(array_2_22)
+    # print(array_3_1)
+    # # ------------- Save and Read file ------------ #
+    # save_txt('./test/test.txt', ['apple', 'banana', 'pear'], True)
+    # content = read_txt('./test/test.txt')
+    # print(content)
 
 
 if __name__ == '__main__':
-    main()
+    """
+    Receive args from command line or bat/cmd files.
+    input: python main.py zhang rui
+    output: ['main.py', 'zhang', 'rui']
+    """
+    argv = sys.argv
+    main(argv)
