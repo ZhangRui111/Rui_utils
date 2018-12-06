@@ -62,7 +62,7 @@ def read_txt(path):
 
 def save_csv(path, data, delimiter=',', if_overwrite=False):
     """
-    Write to CSV file.
+    Save to CSV file.
     :param path: file path involving filename, i.e., ./data/input_data.csv
     :param data: a list, i.e., [[1, 2, 3], ['Morning', 'Evening', 'Afternoon']]
     :param delimiter: delimiter to separate different elements.
@@ -109,7 +109,7 @@ def read_csv(path, delimiter=','):
 
 def save_array_numpy(path, array, f_mt):
     """
-    Save an array to a text file.
+    Save an numpy array to a text file.
     :param path: file path involving filename, i.e., ./data/input_data.out, ./data/input_data.txt
     :param array:
     :param f_mt: i.e., '%d', '%f', '%10.5f', '%.4e' (exponential notation)
@@ -145,7 +145,7 @@ def one_hot_encoding_numpy(array_list, size):
 
 def most_frequent_element_numpy(array):
     """
-    find the most frequent element in a numpy ndarray.
+    find the most frequent element in a numpy array.
     :param array:
     :return:
     """
@@ -155,7 +155,7 @@ def most_frequent_element_numpy(array):
 
 def normalization_zero2one_numpy(array):
     """
-    normalization a ndarray to [0, 1]
+    normalization a numpy array to [0, 1]
     :param array:
     :return:
     """
