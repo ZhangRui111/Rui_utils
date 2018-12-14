@@ -56,6 +56,14 @@ There are some useful and common-used utils during my coding issues. So I collec
 
     normalization a numpy array to [0, 1].
 
+### matplotlib.pyplot
+
+- **read_output_plot()**: `main.py/line168`
+
+    plot numpy array in segment mean value.
+    
+
+
 ### More
 
 - **time recoder**: `main.py/main()`
