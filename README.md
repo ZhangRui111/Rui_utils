@@ -68,29 +68,50 @@ There are some useful and common-used utils during my coding issues. So I collec
 
 `category/folder_file.py`
 
-- **exist_or_create_path()**:
+- **exist_or_create_folder(path_name)**:
 
     Check whether a path exists, if not, then create this path.
 
-def exist_folder(path):
+- **exist_folder(path)**:
 
-def exist_file(path_plus_name):
+    Whether a folder exists.
 
-def remove_folder(old_path, new_path):
+- **exist_file(path_name)**:
 
-def copy_folder(old_path, new_path):
+    Whether a file exists.
 
-def remove_file(old_path_plus_name, new_path_plus_name):
+- **move_folder(source_path, dest_path)**:
 
-def copy_file(old_path_plus_name, new_path_plus_name):
+    Move a folder from source_path to dest_path, including its contents.
 
-def create_folder(path):
+- **copy_folder(source_path, dest_path)**:
 
-def create_file(path_plus_name):
+    Copy a folder from source_path to dest_path, including its contents.
 
-def delete_folder(path):
+- **move_file(source_path, dest_path)**:
 
-def delete_file(path_plus_name):
+    Move a file from source_path to dest_path.
+
+- **copy_file(source_path, dest_path)**:
+
+    Copy a file from source_path to dest_path.
+
+- **create_folder(path)**:
+
+    create a folder.
+
+- **delete_folder(path)**:
+
+    Remove/delete a folder as well as all its content.
+
+- **delete_file(path_name)**:
+
+    Remove/delete a file.
+
+- **rename(source_path, dest_path)**:
+
+    Rename a file or a folder.
+
 
 ### multi task
 
