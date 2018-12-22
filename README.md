@@ -171,3 +171,5 @@ There are some useful and common-used utils during my coding issues. So I collec
 - **time recoder**: `main.py/main()`
 
 - **Receive args from command line or bat/cmd files.**: `main.py/entry & category.main.bat`
+
+- **catch KeyboardInterrupt [ctrl + C]**: `main.py/line 80`

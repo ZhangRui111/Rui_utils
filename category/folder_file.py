@@ -54,7 +54,8 @@ def move_folder(source_path, dest_path):
         shutil.move(pure_source_path, pure_dest_path)
         flag = True
     else:
-        print('move folder error!')
+        pass
+        # raise Exception('move folder error!')
     return flag
 
 

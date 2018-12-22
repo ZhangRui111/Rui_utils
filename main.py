@@ -76,4 +76,9 @@ if __name__ == '__main__':
     output: ['main.py', 'zhang', 'rui']
     """
     argv = sys.argv
-    main(argv)
+    # # ----- catch KeyboardInterrupt [ctrl + C] ---- #
+    try:
+        print('do normal')
+        main(argv)
+    except KeyboardInterrupt:
+        print('catch KeyboardInterrupt and do something!')
