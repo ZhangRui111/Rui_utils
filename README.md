@@ -166,6 +166,15 @@ There are some useful and common-used utils during my coding issues. So I collec
 
     Use Queue to store multi-threads result.
 
+### multi task
+
+`category/tensorflow_related.py`
+
+- **whether_differentiable()**: 
+
+    Use tf.gradient to find out whether an operation is derivable in Tensorflow (< 1.8.0).
+    If there are some operations nondifferentiable in y, error appears.
+
 ### More
 
 - **time recoder**: `main.py/main()`
