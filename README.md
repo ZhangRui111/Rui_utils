@@ -177,6 +177,14 @@ There are some useful and common-used utils during my coding issues. So I collec
 
 ### More
 
+`category/more.py`
+
+- **binary_array_to_int()**: 
+
+    Transfer an bin-array to int(scalar).
+
+### Others
+
 - **time recoder**: `main.py/main()`
 
 - **Receive args from command line or bat/cmd files.**: `main.py/entry & category.main.bat`

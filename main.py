@@ -14,34 +14,34 @@ def main(*args):
     print([local_args[0][i] for i in range(len(local_args[0]))])
     # ---------------- time recoder --------------- #
     start_time = time.time()
-    # # ---------- Save and Read csv file ---------- #
-    # print('Write and Read csv file')
-    # sr.save_csv('./test/test.csv', [[1, 2, 3], [2, 5, 9]], ',', True)
-    # content = sr.read_csv('./test/test.csv', ',')
-    # print(content)
-    # # ------------- One Hot Encoding -------------- #
-    # print('One Hot Encoding')
-    # in_array = np.array([1, 2, 3])
-    # one_hot_array = npr.one_hot_encoding_numpy(in_array, in_array.max()+1)
-    # print(one_hot_array)
-    # # ------------ exist or create path ----------- #
-    # print('exist or create path')
-    # result = sr.exist_or_create_folder('./logs/')
-    # print('Create: ', result)
-    # # ------- find the most frequent element ------ #
-    # print('find the most frequent element')
-    # value = npr.most_frequent_element_numpy(np.array([1, 2, 3, 4, 2, 3, 1, 2, 2, 9]))
-    # print(value)
-    # # ----------- normalization to [0, 1] --------- #
-    # print('normalization to [0, 1]')
-    # old_array = np.array([1, 2, 3, 4, 2, 3, 1, 2, 2, 9])
-    # print(old_array)
-    # new_array = npr.normalization_zero2one_numpy(old_array)
-    # print(new_array)
-    # # ---------------- time recoder -------------- #
-    # for i in range(5):
-    #     time.sleep(1)
-    # print('Time recoder: {0}'.format(time.time()-start_time))
+    # ---------- Save and Read csv file ---------- #
+    print('Write and Read csv file')
+    sr.save_csv('./test/test.csv', [[1, 2, 3], [2, 5, 9]], ',', True)
+    content = sr.read_csv('./test/test.csv', ',')
+    print(content)
+    # ------------- One Hot Encoding -------------- #
+    print('One Hot Encoding')
+    in_array = np.array([1, 2, 3])
+    one_hot_array = npr.one_hot_encoding_numpy(in_array, in_array.max()+1)
+    print(one_hot_array)
+    # ------------ exist or create path ----------- #
+    print('exist or create path')
+    result = sr.exist_or_create_folder('./logs/')
+    print('Create: ', result)
+    # ------- find the most frequent element ------ #
+    print('find the most frequent element')
+    value = npr.most_frequent_element_numpy(np.array([1, 2, 3, 4, 2, 3, 1, 2, 2, 9]))
+    print(value)
+    # ----------- normalization to [0, 1] --------- #
+    print('normalization to [0, 1]')
+    old_array = np.array([1, 2, 3, 4, 2, 3, 1, 2, 2, 9])
+    print(old_array)
+    new_array = npr.normalization_zero2one_numpy(old_array)
+    print(new_array)
+    # ---------------- time recoder -------------- #
+    for i in range(5):
+        time.sleep(1)
+    print('Time recoder: {0}'.format(time.time()-start_time))
     # # ---- Save and Read ndarray from txt file. ---- #
     # print('Save and Read ndarray from txt file.')
     # array_1 = np.array([0, 1, 2, 3, 4, 5], dtype=int)

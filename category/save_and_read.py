@@ -19,7 +19,7 @@ def save_txt(path, data, if_overwrite):
             # f.writelines(list)
     else:
         with open(path, 'a') as f:
-            f.write(data)
+            f.write(str(data))
             # f.writelines(list)
 
 
@@ -51,8 +51,7 @@ def save_csv(path, data, delimiter=',', if_overwrite=False):
     :param if_overwrite: Whether overwrite the original content.
     :return:
     """
-    exist_or_create_path(path)
-
+    exist_or_create_folder(path)
     if if_overwrite is True:
         with open(path, 'w', newline='') as f:
             writer = csv.writer(f, delimiter=delimiter)
@@ -97,7 +96,7 @@ def save_array_numpy(path, array, f_mt):
     :param f_mt: i.e., '%d', '%f', '%10.5f', '%.4e' (exponential notation)
     :return:
     """
-    exist_or_create_path(path)
+    exist_or_create_folder(path)
     np.savetxt(path, array, fmt=f_mt)
 
 
