@@ -13,7 +13,7 @@ def exist_or_create_folder(path_name):
     pure_path = os.path.dirname(path_name)
     if not os.path.exists(pure_path):
         try:
-            os.makedirs(os.path.dirname(pure_path))
+            os.makedirs(pure_path)
             flag = True
         except OSError:
             pass
