@@ -14,6 +14,19 @@ def binary_array_to_int(array):
     return out
 
 
+def variable_exist_before(variable):
+    """
+    Use globals() to see whether a variable exists before now.
+    :param variable:
+    :return:
+    """
+    if variable not in globals():
+        exist_before = False
+    else:
+        exist_before = True
+    return exist_before
+
+
 def main():
     # ---- Transfer an bin-array to int(scalar). ---- #
     print(binary_array_to_int(np.array([0, 1, 1, 0])))

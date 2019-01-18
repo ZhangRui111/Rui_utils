@@ -182,6 +182,10 @@ There are some useful and common-used utils during my coding issues. So I collec
 - **binary_array_to_int()**: 
 
     Transfer an bin-array to int(scalar).
+    
+- **variable_exist_before()**: 
+
+    Use globals() to see whether a variable exists before now.
 
 ### Others
 
