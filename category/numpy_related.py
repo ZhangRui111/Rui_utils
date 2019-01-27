@@ -58,3 +58,22 @@ def normalization_zero2one_numpy(array):
     min_value, max_value = array.min(), array.max()
     new_array = (array - min_value) / (max_value - min_value)
     return new_array
+
+
+def nan_in_array(array):
+    """
+    To check whether there is nan value in array.
+    :param array: multi-dimensional numpy array
+    :return: False -- no nan in array.
+             True  -- has nan in array.
+    """
+    return np.isnan(np.min(array.ravel()))
+
+
+# def main():
+#     # ---- Transfer an bin-array to int(scalar). ---- #
+#     print(nan_in_array(np.array([0, 1, 1, 0])))
+#
+#
+# if __name__ == '__main__':
+#     main()

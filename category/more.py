@@ -27,11 +27,11 @@ def variable_exist_before(variable):
     return exist_before
 
 
-def main():
-    # ---- Transfer an bin-array to int(scalar). ---- #
-    print(binary_array_to_int(np.array([0, 1, 1, 0])))
-    print(binary_array_to_int([0, 1, 1, 0]))
-
-
-if __name__ == '__main__':
-    main()
+# def main():
+#     # ---- Transfer an bin-array to int(scalar). ---- #
+#     print(binary_array_to_int(np.array([0, 1, 1, 0])))
+#     print(binary_array_to_int([0, 1, 1, 0]))
+#
+#
+# if __name__ == '__main__':
+#     main()
