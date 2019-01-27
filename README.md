@@ -170,7 +170,7 @@ There are some useful and common-used utils during my coding issues. So I collec
 
     Use Queue to store multi-threads result.
 
-### multi task
+### Tensorflow related
 
 `category/tensorflow_related.py`
 
@@ -189,7 +189,7 @@ There are some useful and common-used utils during my coding issues. So I collec
     
 - **variable_exist_before()**: 
 
-    Use globals() to see whether a variable exists before now.
+    To check whether a variable exists before now.
 
 ### Others
 

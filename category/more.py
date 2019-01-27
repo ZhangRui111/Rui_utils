@@ -16,7 +16,7 @@ def binary_array_to_int(array):
 
 def variable_exist_before(variable):
     """
-    Use globals() to see whether a variable exists before now.
+    To check whether a variable exists before now.
     :param variable:
     :return:
     """

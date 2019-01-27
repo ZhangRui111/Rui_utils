@@ -56,14 +56,22 @@ def whether_differentiable():
     print(sess.run(y))
     print(sess.run(g))
 
+    # tf.clip_by_value()
+    a = tf.constant([0, 0, 1.0001, 0.0001])
+    y = tf.clip_by_value(a, 1e-2, 1)
+    g = tf.gradients(y, a, stop_gradients=a)
+    sess.run(init)
+    print(sess.run(y))
+    print(sess.run(g))
 
-def main():
-    start_time = time.time()
 
-    whether_differentiable()
-
-    print('Operation takes {}s'.format(time.time()-start_time))
-
-
-if __name__ == '__main__':
-    main()
+# def main():
+#     start_time = time.time()
+#
+#     whether_differentiable()
+#
+#     print('Operation takes {}s'.format(time.time()-start_time))
+#
+#
+# if __name__ == '__main__':
+#     main()
