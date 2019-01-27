@@ -63,6 +63,10 @@ There are some useful and common-used utils during my coding issues. So I collec
 - **read_output_plot()**: 
 
     plot numpy array in segment mean value.
+
+- **show_gray_image()**: 
+
+    Show a numpy array ao a gray image.
     
 ### folder and file operations
 

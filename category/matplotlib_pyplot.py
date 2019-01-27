@@ -37,3 +37,14 @@ def read_output_plot(data, savepath=None, if_close_figure=True):
     plt.show()  # plt.show() must before plt.close()
     if if_close_figure is True:
         plt.close()  # if not close figure, then all plot will be drawn in the same figure.
+
+
+def show_gray_image(img):
+    """
+    Show a numpy array ao a gray image.
+    :param img: two-dimensional numpy array -- i.e., (210, 160)
+    :return:
+    """
+    plt.imshow(img, cmap="gray")
+    plt.show()
+    plt.close()
