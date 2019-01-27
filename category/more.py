@@ -20,7 +20,7 @@ def variable_exist_before(variable):
     :param variable:
     :return:
     """
-    if variable not in globals():
+    if variable not in globals() and variable not in locals():
         exist_before = False
     else:
         exist_before = True
