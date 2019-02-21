@@ -63,7 +63,7 @@ all_axs = []
 all_configs = []
 for rd in ['0', '1', '10', '20', '100']:
     # load csv file
-    fname = '../logs/{0}/rewards.csv'.format(rd)
+    fname = '../logs/smooth_plot/{0}/rewards.csv'.format(rd)
     data = load_csv_manually(fname)
     # only set 1 if raw data is 1, otherwise 0
     data = [1 if float(i) == 1 else 0 for i in data]
