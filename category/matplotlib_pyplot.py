@@ -23,6 +23,7 @@ def read_output_plot(data, savepath=None, if_close_figure=True):
         data_plot.append(np.mean(segment))
     x_axis_data = np.arange(0, length, interval)
 
+    pl.ion()
     plt.plot(x_axis_data, np.asarray(data_plot), label='label')
     plt.title('title')  # plot figure title
     plt.xlabel('xlabel')  # plot figure's x axis name.
