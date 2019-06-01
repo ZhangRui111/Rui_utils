@@ -1,5 +1,5 @@
-test/
-logs/
+**/test/*
+**/logs/*
 .idea/
-*/__pycache__/
-category/ML/dataset/*
+**/__pycache__/*
+**/category/ML/dataset/*

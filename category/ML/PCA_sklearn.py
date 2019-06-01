@@ -89,8 +89,10 @@ from sklearn.decomposition import PCA as sklearnPCA
 # # # ------------ PCA on MNIST dataset ------------ # # #
 # # Loading the MNIST dataset.
 mnist = mn.input_data.read_data_sets("./dataset/mnist/", one_hot=False)
-X = mnist.train.images
-y = mnist.train.labels
+X = mnist.train.images  # shape (*, *)
+y = mnist.train.labels  # shape (*,)
+
+plot_in_2D = False
 # # Colors and Markers
 colors = {0: '#FF5733',
           1: '#FCFF33',
@@ -117,54 +119,59 @@ markers = {0: '.',
 # # Standardizing
 X_std = StandardScaler().fit_transform(X)
 
-# # PCA using sklearn
-sklearn_pca = sklearnPCA(n_components=2)
-# sklearn_pca = sklearnPCA(n_components=3)
-Y_sklearn = sklearn_pca.fit_transform(X_std)
+if plot_in_2D:
+    # # PCA using sklearn
+    sklearn_pca = sklearnPCA(n_components=2)
+    # sklearn_pca = sklearnPCA(n_components=3)
+    Y_sklearn = sklearn_pca.fit_transform(X_std)
 
-# # Plot the result in 2D.
-data = []
-for lab in range(10):
-    trace = dict(
-        label=lab,
-        data=Y_sklearn[y == lab, :]
-    )
-    data.append(trace)
+    # # Plot the result in 2D.
+    data = []
+    for lab in range(10):
+        trace = dict(
+            label=lab,
+            data=Y_sklearn[y == lab, :]
+        )
+        data.append(trace)
 
-for i in range(len(data)):
-    data_x = data[i]['data'][:, 0].ravel()
-    data_y = data[i]['data'][:, 1].ravel()
-    plt.scatter(data_x, data_y, c=colors[data[i]['label']], label=data[i]['label'], marker=markers[data[i]['label']])
+    for i in range(len(data)):
+        data_x = data[i]['data'][:, 0].ravel()
+        data_y = data[i]['data'][:, 1].ravel()
+        plt.scatter(data_x, data_y, c=colors[data[i]['label']], label=data[i]['label'], marker=markers[data[i]['label']])
 
-plt.xlabel('PCA1')
-plt.ylabel('PCA2')
-plt.legend(loc='best')
-plt.show()
+    plt.xlabel('PCA1')
+    plt.ylabel('PCA2')
+    plt.legend(loc='best')
+    plt.show()
+else:
+    # # PCA using sklearn
+    sklearn_pca = sklearnPCA(n_components=3)
+    Y_sklearn = sklearn_pca.fit_transform(X_std)
 
-# # Plot the result in 3D.
-# fig = plt.figure()
-# ax = fig.add_subplot(111, projection='3d')
-#
-# data = []
-# for lab in range(10):
-#     a = Y_sklearn[y == lab, :]
-#     trace = dict(
-#         label=lab,
-#         data=Y_sklearn[y == lab, :]
-#     )
-#     data.append(trace)
-#
-# for i in range(len(data)):
-#     label = data[i]['label']
-#     data_x = data[i]['data'][:, 0].ravel()
-#     data_y = data[i]['data'][:, 1].ravel()
-#     data_z = data[i]['data'][:, 2].ravel()
-#     ax.scatter(data_x, data_y, data_z, c=colors[label], label=label, marker=markers[label])
-#
-# ax.set_xlabel('X Label')
-# ax.set_ylabel('Y Label')
-# ax.set_zlabel('Z Label')
-# plt.legend(loc='best')
-# plt.show()
+    # Plot the result in 3D.
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+
+    data = []
+    for lab in range(10):
+        a = Y_sklearn[y == lab, :]
+        trace = dict(
+            label=lab,
+            data=Y_sklearn[y == lab, :]
+        )
+        data.append(trace)
+
+    for i in range(len(data)):
+        label = data[i]['label']
+        data_x = data[i]['data'][:, 0].ravel()
+        data_y = data[i]['data'][:, 1].ravel()
+        data_z = data[i]['data'][:, 2].ravel()
+        ax.scatter(data_x, data_y, data_z, c=colors[label], label=label, marker=markers[label])
+
+    ax.set_xlabel('X Label')
+    ax.set_ylabel('Y Label')
+    ax.set_zlabel('Z Label')
+    plt.legend(loc='best')
+    plt.show()
 
 # # # ------------ PCA on MNIST dataset ------------ # # #

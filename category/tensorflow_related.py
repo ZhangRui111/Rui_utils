@@ -1,6 +1,19 @@
 import tensorflow as tf
 import time
 
+flags = tf.flags
+FLAGS = flags.FLAGS
+
+# # Required parameters # #
+# # flags.DEFINE_string("paras_name", "default_value", "illustration")
+flags.DEFINE_string(
+    "data_dir", "./data/",
+    "The input data dir. Should contain the .tsv files (or other data files).")
+
+flags.DEFINE_bool("do_train", True, "Whether to run training.")
+
+flags.DEFINE_float("learning_rate", 2e-5, "The initial learning rate for Adam.")
+
 
 def whether_differentiable():
     """
@@ -65,13 +78,23 @@ def whether_differentiable():
     print(sess.run(g))
 
 
-# def main():
-#     start_time = time.time()
-#
-#     whether_differentiable()
-#
-#     print('Operation takes {}s'.format(time.time()-start_time))
-#
-#
-# if __name__ == '__main__':
-#     main()
+def main(_):
+    start_time = time.time()
+
+    # # --------- paras received from terminal-------- #
+    print(FLAGS.data_dir)
+    print(FLAGS.do_train)
+    print(FLAGS.learning_rate)
+
+    # # ------------ whether_differentiable----------- #
+    # whether_differentiable()
+    # print('Operation takes {}s'.format(time.time()-start_time))
+
+
+if __name__ == '__main__':
+    # # pop a UserWarning for necessary parameters
+    # # (paras that has a None default value)
+    flags.mark_flag_as_required("data_dir")
+    flags.mark_flag_as_required("do_train")
+    flags.mark_flag_as_required("learning_rate")
+    tf.app.run()

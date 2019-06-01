@@ -179,6 +179,10 @@ There are some useful and common-used utils during my coding issues. So I collec
     Use tf.gradient to find out whether an operation is derivable in Tensorflow (< 1.8.0).
     If there are some operations nondifferentiable in y, error appears.
 
+- **main() + tf.app.run() + tf.flags**
+
+    Receive parameters from terminal.
+
 ### More
 
 `category/more.py`
@@ -201,13 +205,17 @@ There are some useful and common-used utils during my coding issues. So I collec
     
 - **shuffle_data.py**: 
 
-    shuffle the data (features and labels).
+    Shuffle the data (features and labels).
+    
+- **load_datasets.py**: 
+
+    Load mnist, cifar10 or iris datasets.
 
 
 ### Others
 
 - **time recoder**: `main.py/main()`
 
-- **Receive args from command line or bat/cmd files.**: `main.py/entry & category.main.bat`
+- **Receive args from terminal or bat/cmd files.**: `main.py/entry & category.main.bat`
 
 - **catch KeyboardInterrupt [ctrl + C]**: `main.py/line 80`
