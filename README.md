@@ -191,6 +191,19 @@ There are some useful and common-used utils during my coding issues. So I collec
 
     To check whether a variable exists before now.
 
+### Machine Learning
+
+`category/ML/*`
+
+- **PCA_sklearn.py**: 
+
+    Apply PCA to the dataset using sklearn.
+    
+- **shuffle_data.py**: 
+
+    shuffle the data (features and labels).
+
+
 ### Others
 
 - **time recoder**: `main.py/main()`
