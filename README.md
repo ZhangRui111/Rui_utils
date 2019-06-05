@@ -1,6 +1,7 @@
 # Rui's Utils
 
-There are some useful and common-used utils during my coding issues. So I collect and realize them in Python.
+There are some useful and common-used utils during my coding issues. So I collect and realize them in Python. 
+Note: **all codes are compatible with python 3.X**.
 
 ## Content
 
@@ -205,7 +206,7 @@ There are some useful and common-used utils during my coding issues. So I collec
     
 - **shuffle_data.py**: 
 
-    Shuffle the data (features and labels).
+    Shuffle the data (features and labels) using sklearn or numpy.
     
 - **load_datasets.py**: 
 

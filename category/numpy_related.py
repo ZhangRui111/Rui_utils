@@ -70,10 +70,74 @@ def nan_in_array(array):
     return np.isnan(np.min(array.ravel()))
 
 
+def conditional_indexes(array):
+    """ np.where to get conditional indexes. """
+    return np.where(array > 5)
+
+
+def merge_array_lists2single(mylist, list_of_list=False):
+    """ Convert list of numpy arrays (or list of list) into single numpy array. """
+    if list_of_list:
+        # Convert 'list of list' to 'list of numpy array'.
+        mylist = list(map(np.array, mylist))
+
+    # # 1. np.array(LIST)
+    # # This method only works for the specific case of
+    # # vertical stacking of 1-D arrays with same length such as demo_list_1.
+    #
+    # # Works for demo_list_1.
+    # return_array = np.array(mylist)
+
+    # # 2. np.concatenate(LIST, axis=0)
+    # # This method is general, but you'll have to expand dimensionality
+    # # for 1-D arrays.
+    #
+    # # Works for demo_list_2, demo_list_3 and
+    # # demo_list_1 (have to expand dimensionality manually).
+    # return_array = np.concatenate(mylist, axis=0)
+
+    # # 3. np.stack(LIST, axis=0)
+    # # This method is general, but it expands dimensionality for
+    # # 1-D arrays automatically.
+    #
+    # # Works for demo_list_1.
+    # return_array = np.stack(mylist, axis=0)
+
+    # # 4. np.vstack(LIST)
+    # # This method is the Best.
+    #
+    # # Works for demo_list_1, demo_list_2, demo_list_3.
+    return_array = np.vstack(mylist)
+
+    return return_array
+
+
 # def main():
-#     # ---- Transfer an bin-array to int(scalar). ---- #
-#     print(nan_in_array(np.array([0, 1, 1, 0])))
-#
-#
+    # # ---- Transfer an bin-array to int(scalar). ---- #
+    # print(nan_in_array(np.array([0, 1, 1, 0])))
+    # # ------- Get indexes of whose value > 5. ------- #
+    # print(conditional_indexes(np.arange(10)))
+    # ---------- Convert to a single list. ---------- #
+    # # demo_list_1's shape: [(5,), (5,), (5,)]
+    # demo_list_1 = [np.array([1, 1, 1, 1, 1]),
+    #                np.array([2, 2, 2, 2, 2]),
+    #                np.array([3, 3, 3, 3, 3])]
+    # # demo_list_2's shape: [(1, 5), (1, 5), (1, 5)]
+    # demo_list_2 = [np.array([1, 1, 1, 1, 1])[np.newaxis, :],
+    #                np.array([2, 2, 2, 2, 2])[np.newaxis, :],
+    #                np.array([3, 3, 3, 3, 3])[np.newaxis, :]]
+    # # demo_list_3's shape: [(1, 5), (2, 5), (3, 5)]
+    # demo_list_3 = [np.array([1, 1, 1, 1, 1])[np.newaxis, :],
+    #                np.array([2, 2, 2, 2, 2, 2, 2, 2, 2, 2]).reshape((2, 5)),
+    #                np.array([3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]).reshape((3, 5))]
+    # merge_array = merge_array_lists2single(demo_list_1, list_of_list=False)
+    # print(merge_array.shape)
+    # demo_list_4 = [[1, 1, 1, 1, 1],
+    #                [2, 2, 2, 2, 2],
+    #                [3, 3, 3, 3, 3]]
+    # merge_array = merge_array_lists2single(demo_list_4, list_of_list=True)
+    # print(merge_array.shape)
+
+
 # if __name__ == '__main__':
 #     main()
