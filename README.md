@@ -51,11 +51,31 @@ Note: **all codes are compatible with python 3.X**.
 
 - **most_frequent_element_numpy()**: 
 
-    find the most frequent element in a numpy array.
+    Find the most frequent element in a numpy array.
 
 - **normalization_zero2one_numpy()**:
 
-    normalization a numpy array to [0, 1].
+    Normalization a numpy array to [0, 1].
+    
+- **conditional_indexes()**: 
+
+    np.where to get conditional indexes.
+
+- **merge_array_lists2single()**:
+
+    Convert list of numpy arrays (or list of list) into single numpy array.
+
+### List related
+
+`category/list_related.py`
+
+- **remove_duplicates()**:
+
+    Remove Duplicates From a Python List.
+    
+- **convert_items_type()**:
+
+    Convert all items in a list to int/float/str type.
 
 ### matplotlib.pyplot
 
@@ -63,7 +83,7 @@ Note: **all codes are compatible with python 3.X**.
 
 - **read_output_plot()**: 
 
-    plot numpy array in segment mean value.
+    Plot numpy array in segment mean value.
 
 - **show_gray_image()**: 
 
@@ -103,7 +123,7 @@ Note: **all codes are compatible with python 3.X**.
 
 - **create_folder(path)**:
 
-    create a folder.
+    Create a folder.
 
 - **delete_folder(path)**:
 
@@ -127,11 +147,11 @@ Note: **all codes are compatible with python 3.X**.
 
 - **process_info()**: 
 
-    get (parent/child) process id.
+    Get (parent/child) process id.
 
 - **multi_process_join()**: 
 
-    multi processes with join to assure order.
+    Multi processes with join to assure order.
 
 - **multicore_lock()**: 
 
@@ -153,15 +173,15 @@ Note: **all codes are compatible with python 3.X**.
 
 - **threading_func()**: 
 
-    info: threading's functions
+    Info: threading's functions
     
 - **thread_object_func()**: 
 
-    info: One thread's function
+    Info: One thread's function
 
 - **multi_threads_join()**: 
 
-    multi threads with join to assure order.
+    Multi threads with join to assure order.
 
 - **shared_space()**: 
 
