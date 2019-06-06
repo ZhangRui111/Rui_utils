@@ -116,28 +116,54 @@ markers = {0: '.',
            8: '+',
            9: 'x'}
 
+legends = {0: 'class 1',
+           1: 'class 2',
+           2: 'class 3',
+           3: 'class 4',
+           4: 'class 5',
+           5: 'class 6',
+           6: 'class 7',
+           7: 'class 8',
+           8: 'class 9',
+           9: 'class 10'}
+
 # # Standardizing
 X_std = StandardScaler().fit_transform(X)
 
 if plot_in_2D:
     # # PCA using sklearn
     sklearn_pca = sklearnPCA(n_components=2)
-    # sklearn_pca = sklearnPCA(n_components=3)
-    Y_sklearn = sklearn_pca.fit_transform(X_std)
+    X_std_pca = sklearn_pca.fit_transform(X_std)
+
+    #####################################################
+    # fit_transform(self, X, y=None)
+    # Fit the model with X and apply the dimensionality reduction on X.
+    #
+    # Parameters:
+    # X : array-like, shape (n_samples, n_features)
+    #     Training data, where n_samples is the number of samples and n_features is the number of features.
+    # y : Ignored
+    #
+    # Returns:
+    # X_new : array-like, shape (n_samples, n_components)
+    #
+    # Note: n_components must less than n_samples.
+    #####################################################
 
     # # Plot the result in 2D.
     data = []
     for lab in range(10):
         trace = dict(
             label=lab,
-            data=Y_sklearn[y == lab, :]
+            data=X_std_pca[y == lab, :]
         )
         data.append(trace)
 
     for i in range(len(data)):
         data_x = data[i]['data'][:, 0].ravel()
         data_y = data[i]['data'][:, 1].ravel()
-        plt.scatter(data_x, data_y, c=colors[data[i]['label']], label=data[i]['label'], marker=markers[data[i]['label']])
+        plt.scatter(data_x, data_y, c=colors[data[i]['label']], label=legends[data[i]['label']],
+                    marker=markers[data[i]['label']])
 
     plt.xlabel('PCA1')
     plt.ylabel('PCA2')
@@ -146,7 +172,7 @@ if plot_in_2D:
 else:
     # # PCA using sklearn
     sklearn_pca = sklearnPCA(n_components=3)
-    Y_sklearn = sklearn_pca.fit_transform(X_std)
+    X_std_pca = sklearn_pca.fit_transform(X_std)
 
     # Plot the result in 3D.
     fig = plt.figure()
@@ -154,10 +180,9 @@ else:
 
     data = []
     for lab in range(10):
-        a = Y_sklearn[y == lab, :]
         trace = dict(
             label=lab,
-            data=Y_sklearn[y == lab, :]
+            data=X_std_pca[y == lab, :]
         )
         data.append(trace)
 
@@ -166,7 +191,7 @@ else:
         data_x = data[i]['data'][:, 0].ravel()
         data_y = data[i]['data'][:, 1].ravel()
         data_z = data[i]['data'][:, 2].ravel()
-        ax.scatter(data_x, data_y, data_z, c=colors[label], label=label, marker=markers[label])
+        ax.scatter(data_x, data_y, data_z, c=colors[label], label=legends[label], marker=markers[label])
 
     ax.set_xlabel('X Label')
     ax.set_ylabel('Y Label')
