@@ -215,6 +215,10 @@ Note: **all codes are compatible with python 3.X**.
 - **variable_exist_before()**: 
 
     To check whether a variable exists before now.
+    
+- **argparse**
+
+    Receive parameters from terminal. `main()`
 
 ### Machine Learning
 
@@ -237,6 +241,6 @@ Note: **all codes are compatible with python 3.X**.
 
 - **time recoder**: `main.py/main()`
 
-- **Receive args from terminal or bat/cmd files.**: `main.py/entry & category.main.bat`
+- **Receive parameters from terminal or bat/cmd files by sys.argv.**: `main.py/entry & category.main.bat`
 
 - **catch KeyboardInterrupt [ctrl + C]**: `main.py/line 80`
