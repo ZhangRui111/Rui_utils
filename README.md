@@ -81,14 +81,23 @@ Note: **all codes are compatible with python 3.X**.
 
 `category/matplotlib_pyplot.py`
 
-- **read_output_plot()**: 
+- **read_output_plot()**:
 
     Plot numpy array in segment mean value.
 
-- **show_gray_image()**: 
+- **show_gray_image()**:
 
     Show a numpy array ao a gray image.
-    
+
+- **aspect_ratio_image()**:
+
+    Change the aspect ratio of multiple image (or axes).
+
+- **aspect_ratio_multi_image()**:
+
+    Change the aspect ratio of multiple image (or axes)
+    so that they have exactly the same display aspect ratio.
+
 ### folder and file operations
 
 `category/folder_file.py`
