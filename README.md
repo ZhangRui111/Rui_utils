@@ -248,8 +248,10 @@ Note: **all codes are compatible with python 3.X**.
 
 ### Others
 
-- **time recoder**: `main.py/main()`
+- **Time recoder**: `main.py/main()`
 
 - **Receive parameters from terminal or bat/cmd files by sys.argv.**: `main.py/entry & category.main.bat`
 
-- **catch KeyboardInterrupt [ctrl + C]**: `main.py/line 80`
+- **Catch KeyboardInterrupt [ctrl + C]**: `main.py/line 91`
+
+- **Add new directories to the path attribute of the sys module**: `main.py/line 5 & 12`
