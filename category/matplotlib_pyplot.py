@@ -1,5 +1,6 @@
-import matplotlib as mlp
-mlp.use('Agg')
+# import matplotlib as mlp
+# Matplotlib is currently using agg, which is a non-GUI backend.
+# mlp.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -23,7 +24,7 @@ def read_output_plot(data, savepath=None, if_close_figure=True):
         data_plot.append(np.mean(segment))
     x_axis_data = np.arange(0, length, interval)
 
-    pl.ion()
+    plt.ion()
     plt.plot(x_axis_data, np.asarray(data_plot), label='label')
     plt.title('title')  # plot figure title
     plt.xlabel('xlabel')  # plot figure's x axis name.
@@ -49,3 +50,70 @@ def show_gray_image(img):
     plt.imshow(img, cmap="gray")
     plt.show()
     plt.close()
+
+
+def aspect_ratio_image(ratio):
+    """
+    Change the aspect ratio of multiple image (or axes).
+    :return:
+    """
+    # Refer to https://tonysyu.github.io/raw_content/matplotlib-style-gallery/gallery.html
+    # for Matplotlib Style Gallery
+    plt.style.use('ggplot')
+    x = np.linspace(-5, 5, 100)
+    y1 = np.exp(0.8 * x)
+    y2 = np.sin(x)
+
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    ax.plot(x, y1)
+    ax.plot(x, y2)
+
+    xleft, xright = ax.get_xlim()
+    ybottom, ytop = ax.get_ylim()
+
+    # The abs method is used to make sure that all numbers are positive
+    # because x and y axis of an axes maybe inversed.
+    ax.set_aspect(abs((xright - xleft) / (ybottom - ytop)) * ratio)
+    # Or we can utilise the get_data_ratio method which is more concise
+    # ax.set_aspect(1.0/ax.get_data_ratio()*ratio)
+
+    plt.show()
+
+
+def aspect_ratio_multi_image(ratio):
+    """
+    Change the aspect ratio of multiple image (or axes)
+    so that they have exactly the same display aspect ratio.
+    :return:
+    """
+    y1 = np.random.uniform(0.1, 0.7, size=(167,))
+    y2 = np.random.uniform(1, 100, size=(167,))
+    y1 = sorted(y1)
+    y2 = sorted(y2)
+
+    fig = plt.figure(figsize=(10, 3))
+    # fig.set_edgecolor('red')
+    ax1 = fig.add_subplot(121)
+    ax2 = fig.add_subplot(122, sharex=ax1)
+
+    ax1.plot(y1)
+    ax1.set_ylim([min(y1) * 0.9, max(y1) * 1.1])
+    ax1.set_ylabel('y1')
+
+    ax2.plot(y2)
+    ax2.set_ylim([min(y2) * 0.9, max(y2) * 1.1])
+    ax2.set_ylabel('y2')
+
+    for ax in [ax1, ax2]:
+        xmin, xmax = ax.get_xlim()
+        ymin, ymax = ax.get_ylim()
+        print((xmax - xmin) / (ymax - ymin))
+        ax.set_aspect(abs((xmax - xmin) / (ymax - ymin)) * ratio, adjustable='box')
+
+    plt.show()
+
+
+# if __name__ == '__main__':
+#     aspect_ratio_image(0.5)
+#     aspect_ratio_multi_image(0.5)
