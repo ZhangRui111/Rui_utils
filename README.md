@@ -65,6 +65,9 @@ Note: **all codes are compatible with python 3.X**.
 
     Convert list of numpy arrays (or list of list) into single numpy array.
 
+- **count_items()**: 
+
+    Count the occurrence of certain item in an ndarray.
 ### List related
 
 `category/list_related.py`
@@ -212,6 +215,14 @@ Note: **all codes are compatible with python 3.X**.
 - **main() + tf.app.run() + tf.flags**
 
     Receive parameters from terminal.
+    
+### Torch related
+
+`category/torch_related.py`
+
+- **index_by_array()**: 
+
+    Array as index in torch.
 
 ### More
 

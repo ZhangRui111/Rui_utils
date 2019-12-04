@@ -112,7 +112,13 @@ def merge_array_lists2single(mylist, list_of_list=False):
     return return_array
 
 
-# def main():
+def count_items(array):
+    """ Count the occurrence of certain item in an ndarray. """
+    unique, counts = np.unique(array, return_counts=True)
+    return dict(zip(unique, counts))
+
+
+def main():
     # # ---- Transfer an bin-array to int(scalar). ---- #
     # print(nan_in_array(np.array([0, 1, 1, 0])))
     # # ------- Get indexes of whose value > 5. ------- #
@@ -137,7 +143,9 @@ def merge_array_lists2single(mylist, list_of_list=False):
     #                [3, 3, 3, 3, 3]]
     # merge_array = merge_array_lists2single(demo_list_4, list_of_list=True)
     # print(merge_array.shape)
+    arr = np.array([0, 1, 2, 3, 0, 2, 5, 8, 3, 2, 0])
+    print(count_items(arr))
 
 
-# if __name__ == '__main__':
-#     main()
+if __name__ == '__main__':
+    main()
