@@ -223,6 +223,10 @@ Note: **all codes are compatible with python 3.X**.
 - **index_by_array()**: 
 
     Array as index in torch.
+    
+- **torch_logical_operations()**:
+
+    torch logical operations: or, and, not, xor.    
 
 ### More
 

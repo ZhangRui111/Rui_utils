@@ -34,8 +34,18 @@ def index_by_array():
     print(output_tensor)
 
 
+def torch_logical_operations():
+    a = torch.tensor([0, 1, 0, 1, 0, 1, 0, 1, 0]).byte().view(3, 3)
+    b = torch.tensor([0, 1, 1, 1, 1, 1, 0, 0, 0]).byte().view(3, 3)
+    print("torch tensor or:", a | b)
+    print("torch tensor and:", a & b)
+    print("torch tensor not:", ~a)
+    print("torch tensor xor:", a ^ b)
+
+
 def main():
-    index_by_array()
+    # index_by_array()
+    torch_logical_operations()
 
 
 if __name__ == '__main__':
