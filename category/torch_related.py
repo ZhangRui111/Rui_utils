@@ -35,6 +35,7 @@ def index_by_array():
 
 
 def torch_logical_operations():
+    """ torch logical operations: or, and, not, xor. """
     a = torch.tensor([0, 1, 0, 1, 0, 1, 0, 1, 0]).byte().view(3, 3)
     b = torch.tensor([0, 1, 1, 1, 1, 1, 0, 0, 0]).byte().view(3, 3)
     print("torch tensor or:", a | b)
@@ -43,9 +44,27 @@ def torch_logical_operations():
     print("torch tensor xor:", a ^ b)
 
 
+def get_index_by_value():
+    """ get index by value. """
+    a = torch.tensor([0, 1, 0, 1, 0, 1])
+    print((a == 1).nonzero().squeeze())
+    a = torch.tensor([0, 1, 0, 1, 0, 1, 0, 1, 0]).view(3, 3)
+    print((a == 1).nonzero().squeeze())
+
+
 def main():
-    # index_by_array()
-    torch_logical_operations()
+    # ---------- design program to a special GPU ---------- #
+    # 1. In shell,
+    # CUDA_VISIBLE_DEVICES=0 python main.py
+    # CUDA_VISIBLE_DEVICES=0,1 python main.py
+    # or
+    # 2. In python script,
+    # import os
+    # os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+    # ----------------------------------------------------- #
+    index_by_array()
+    # torch_logical_operations()
+    # get_index_by_value()
 
 
 if __name__ == '__main__':

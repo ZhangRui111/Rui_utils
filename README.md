@@ -220,13 +220,21 @@ Note: **all codes are compatible with python 3.X**.
 
 `category/torch_related.py`
 
+- **Allocate program to a special GPU**:
+
+    `category/torch_related.py/main()` 
+
 - **index_by_array()**: 
 
     Array as index in torch.
     
 - **torch_logical_operations()**:
 
-    torch logical operations: or, and, not, xor.    
+    Torch logical operations: or, and, not, xor. 
+    
+- **get_index_by_value()**:
+
+    Get index by value.    
 
 ### More
 
