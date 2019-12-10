@@ -273,8 +273,10 @@ Note: **all codes are compatible with python 3.X**.
 
 - **Time recoder**: `main.py/main()`
 
-- **Receive parameters from terminal or bat/cmd files by sys.argv.**: `main.py/entry & category.main.bat`
+- **Receive parameters from terminal or bat/cmd files by sys.argv.**: `main.py/entry & category/main.bat`
 
-- **Catch KeyboardInterrupt [ctrl + C]**: `main.py/line 91`
+- **Catch KeyboardInterrupt [ctrl + C]**: `main.py/line 95`
 
 - **Add new directories to the path attribute of the sys module**: `main.py/line 5 & 12`
+
+- **Check if an object has an attribute in Python**: `main.py/line 81`

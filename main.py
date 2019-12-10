@@ -78,6 +78,10 @@ def main(*args):
     # print("plot numpy array in segment mean value")
     # data = np.arange(5000)
     # mp.read_output_plot(data)
+    # ---------------- class attribute -------------- #
+    # print(hasattr(self, 'label'))  # in-class function
+    # dqn = DQN()
+    # print(hasattr(dqn, 'label'))  # other function
 
 
 if __name__ == "__main__":
