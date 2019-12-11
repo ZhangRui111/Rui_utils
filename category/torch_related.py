@@ -1,4 +1,5 @@
 import torch
+import torch.nn.functional as F
 
 
 def index_by_array():
@@ -50,6 +51,23 @@ def get_index_by_value():
     print((a == 1).nonzero().squeeze())
     a = torch.tensor([0, 1, 0, 1, 0, 1, 0, 1, 0]).view(3, 3)
     print((a == 1).nonzero().squeeze())
+
+
+def one_hot_torch():
+    """ one-hot transformation in torch. """
+    acts_value = torch.rand(2, 9, 3, 3).to('cuda')
+    _, acts = torch.max(acts_value, 1)
+    print(acts)
+    print(acts.size())
+    print(acts[0, 0, 0])
+    acts_one_hot = F.one_hot(acts, num_classes=9)
+    print(acts_one_hot)
+    print(acts_one_hot.size())
+    acts_one_hot_permute = acts_one_hot.permute(0, 3, 1, 2).contiguous()
+    print(acts_one_hot_permute.size())
+    print(acts_one_hot_permute[0, :, 0, 0])
+    _, acts_new = torch.max(acts_one_hot_permute, 1)
+    print(acts_new)
 
 
 def main():

@@ -234,7 +234,11 @@ Note: **all codes are compatible with python 3.X**.
     
 - **get_index_by_value()**:
 
-    Get index by value.    
+    Get index by value.
+
+- **one_hot_torch()**:
+
+    One-hot transformation in torch.
 
 ### More
 
