@@ -33,6 +33,14 @@ Note: **all codes are compatible with python 3.X**.
 
     Load data from a text file.
 
+- **save_dic_txt()**: 
+
+    Save a dictionary to a .txt file.
+
+- **read_dic_txt()**:
+
+    Read a dictionary from a .txt file.
+
 ### Numpy related
 
 `category/numpy_related.py`

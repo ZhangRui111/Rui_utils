@@ -109,3 +109,25 @@ def read_array_numpy(path, d_type=float):
     """
     array = np.loadtxt(path, dtype=d_type)
     return array
+
+
+def save_dic_txt(dic, save_path):
+    """
+    Save a dictionary to a .txt file.
+    :param dic:
+    :param save_path:
+    :return:
+    """
+    with open(save_path, 'w+') as fw:
+        fw.write(str(dic))
+
+
+def read_dic_txt(save_path):
+    """
+    Read a dictionary from a .txt file.
+    :param save_path:
+    :return:
+    """
+    with open(save_path, 'r+') as fr:
+        dic = eval(fr.read())
+    return dic
