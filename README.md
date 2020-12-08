@@ -279,6 +279,10 @@ Note: **all codes are compatible with python 3.X**.
 - **load_datasets.py**: 
 
     Load mnist, cifar10 or iris datasets.
+    
+- **get_dataset_stats.py**
+
+    Get statistic information (i.e., mean and std) of some typical dataset.
 
 
 ### Others
