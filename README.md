@@ -226,6 +226,8 @@ Note: **all codes are compatible with python 3.X**.
     
 ### Torch related
 
+`category/ddp.py`: Data Parallel in PyTorch by torch.nn.parallel.DistributedDataParallel
+
 `category/torch_related.py`
 
 - **Allocate program to a special GPU**:
