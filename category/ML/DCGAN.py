@@ -31,6 +31,8 @@ workers = 2
 # Batch size during training
 batch_size = 128
 # Spatial size of training images. All images will be resized to this size using a transformer.
+# defaults to 64x64. If another size is desired, the structures of D and G must be changed.
+# See https://github.com/pytorch/examples/issues/70 for more details
 image_size = 64
 # Number of channels in the training images. For color images this is 3
 nc = 3
