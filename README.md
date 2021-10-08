@@ -286,6 +286,10 @@ Note: **all codes are compatible with python 3.X**.
 
     Get statistic information (i.e., mean and std) of some typical dataset.
 
+- **DCGAN.py**
+
+    A simple demo of DCGAN to generate synthetic human faces.
+
 
 ### Others
 
